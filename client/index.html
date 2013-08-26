@@ -3,10 +3,19 @@
 	<head><title>game</title></head>
 	<body>
 		running
-		<script src="http://192.168.1.34:88/github/CT/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://192.168.1.108:88/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
-			var socket = io.connect(88);
+			var socket = io.connect('http://192.168.1.108:88');
+			console.log(socket);
 			
+            /**
+             * Wait for node.js to say it's alright we're connected 
+             */
+            socket.on('connect', function ()
+            {
+                console.log('connect');
+            });
+            
 		    socket.on('G', function ()
 		    {
 		        console.log('Are you with me or aaaare you on your own!!!!?');
